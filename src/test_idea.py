@@ -1,6 +1,6 @@
 """Decrypt Alex's password to escape the room!"""
 import unittest
-from idea import IDEA, Block
+from idea import IDEA, Word
 
 class DecryptionTest(unittest.TestCase):
     """Unit Tests to help you decrypt Alex's message"""

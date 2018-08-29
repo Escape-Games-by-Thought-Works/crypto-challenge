@@ -49,9 +49,10 @@ class IDEA():
         sub_blocks = IDEA.create_sub_blocks(block)
         for iteration in range(self.n_rounds):
             idx = 6 * iteration
-            subkeys = self.subkeys[idx:idx + 6]
             swap_outs = iteration < self.n_rounds - 1
-            sub_blocks = IDEA.idea_round(sub_blocks, subkeys, swap_outs)
+            sub_blocks = IDEA.idea_round(sub_blocks,
+                                         self.subkeys[idx:idx + 6],
+                                         swap_outs)
 
         # Always end with a half-step
         output = IDEA.half_step(sub_blocks, self.subkeys[48:52])
