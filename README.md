@@ -65,7 +65,7 @@ For encryption, each round uses six subkeys, and these subkeys are not used in s
 
 For decryption, the subkeys for decryption are derived as follows:
 
-- For the first half-step, take the four subkeys used in the _last_ half-step of the encryption round. (For the second half-step, take the subkeys used in the second to last round, etc).
+- For the first half-step, take the four subkeys used in the _last_ half-step of the encryption round. (For the second round, take the subkeys used in the second to last round, etc).
 - Compute the multiplicative inverse for the first and fourth subkeys. Compute the additive inverse for the second and third.
 - For all decryption half-steps except for the first and last, switch the second and third subkeys.
 - For the first scramble round, take the two subkeys used in the last scramble round (respectively for 2nd and 2nd to last, etc.)
@@ -76,7 +76,7 @@ Remember: after 8 full rounds, we only do a half-step, so we only need 4 subkeys
 Example for the first step:
 
 - The last encryption half-step uses K49, K50, K51, and K52. The last encryption scramble step uses K47 and K48.
-- We compute the subkeys as:
+- For example, we could then compute the subkeys and implement the first IDEA decryption round as:
 ```python3
 subkeys = [K49.m_inv(), K50.a_inv(), K51.a_inv(), K52.m_inv(), K47, K48]
 output_block = IDEA.idea_round(encrypted_block, subkeys) # returns the output of the first decryption round
