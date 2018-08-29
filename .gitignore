@@ -1,0 +1,10 @@
+**/__pycache__/*
+**/.pycache/*
+**/.pytest_cache/*
+**/.solution.json
+**/.vscode/*
+**/env/*
+**/.ipynb_checkpoints/*
+
+mymodel.pkl
+accuracy.txt
