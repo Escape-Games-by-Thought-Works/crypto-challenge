@@ -1,26 +1,26 @@
 """Implement the IDEA algorithm in python manually"""
 
-class Block(int):
+class Word(int):
     """Implement IDEA's addition, multiplication, and xor group arithmetic"""
     def __add__(self, x):
-        return Block(int.__add__(self, x) % (1 << 16))
+        return Word(int.__add__(self, x) % (1 << 16))
 
     def __mul__(self, x):
-        return Block(int.__mul__(self, x) % ((1 << 16) + 1))
+        return Word(int.__mul__(self, x) % ((1 << 16) + 1))
 
     def __xor__(self, x):
-        return Block(int.__xor__(self, x))
+        return Word(int.__xor__(self, x))
 
     def m_inv(self):
         """Compute the multiplicative inverse modulo 2**16 + 1"""
         if self == 0:
-            return Block(1 << 16)
+            return Word(1 << 16)
         _p = ((1 << 16) + 1)
-        return Block(int.__pow__(self, (_p - 2)) % _p)
+        return Word(int.__pow__(self, (_p - 2)) % _p)
 
     def a_inv(self):
         """Compute the additive inverse modulo 2**16"""
-        return Block(int.__sub__((1 << 16), self) % (1 << 16))
+        return Word(int.__sub__((1 << 16), self) % (1 << 16))
 
 class IDEA():
     """Implement the IDEA encryption algorithm"""
@@ -42,7 +42,7 @@ class IDEA():
 
     def _get_subkeys(self):
         """Break the key into 8 subkeys"""
-        return [Block(self._rot_l(16 * (i + 1), 128) & 0xFFFF)
+        return [Word(self._rot_l(16 * (i + 1), 128) & 0xFFFF)
                 for i in range(8)]
 
     def _encrypt_block(self, block):
@@ -76,7 +76,7 @@ class IDEA():
     def create_sub_blocks(block):
         """Break a 64-bit block into four 16-bit words"""
         mask = 0xFFFF
-        return [Block((block >> 16 * (3 - i)) & mask) for i in range(4)]
+        return [Word((block >> 16 * (3 - i)) & mask) for i in range(4)]
 
     @staticmethod
     def string_to_blocks(message):
