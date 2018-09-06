@@ -76,5 +76,5 @@ Remember: after 8 full rounds, we only do a half-step, so we only need 4 subkeys
 
 The following images should be helpful.
 
-![IDEA encryption](images/idea_encrypt.png)
-![IDEA_decryption](images/idea_decrypt.png)
+![IDEA encryption](images/idea_encryption.png)
+![IDEA_decryption](images/idea_decryption.png)
