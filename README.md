@@ -62,7 +62,7 @@ Implement the decryption step of the IDEA algorithm. To do this, you will need t
 
 Important notes: `half_step` and `idea_round` will always take four 16-bit `Word`s as the first input argument. `half_step` uses four subkeys starting from the first element in the provided list; `idea_round` implements `half_step`, using those four subkeys, and also uses two more subkeys in its mixture step, for a total of 6.
 
-For encryption, each round uses six subkeys, and these subkeys are not used in subsequent rounds. For example the first encryption round uses subkeys K1, K2, K3, K4, K5, and K6. The first half-step uses K1 through K4, while K5 and K6 are used for the mixture step.
+For encryption, each round uses six subkeys, and these subkeys are not used in subsequent rounds. For example the first encryption round uses subkeys K0, K1, K2, K3, K4, and K5. The first half-step uses K0 through K3, while K4 and K5 are used for the mixture step.
 
 For decryption, the subkeys for decryption are derived as follows:
 
