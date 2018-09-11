@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require 'idea'
+
+puts 'Enter the key (hex):'
+key_hex = gets
+
+key = key_hex.hex & 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+
+puts "The key is: 0x#{key.to_s(16).upcase.rjust(32, '0')}"
+
+puts "(E)ncrypt or (D)ecrypt?"
+chosen_answer = gets.downcase
+enc = chosen_answer.start_with?('e')
+
+puts (enc ? 'Enter the text to encrpyt:' : 'Enter the base64 code to decrypt:')
+
+text = gets
+
+idea = IDEA.new(key)
+
+puts "The result is:"
+
+if enc
+  puts idea.encrypt_string(text)
+else
+  puts idea.decrypt_string(text)
+end
