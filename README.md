@@ -27,6 +27,8 @@ The cleverness of the IDEA cipher comes from the fact that the same algorithm is
 
 Finish Alex's work by implementing the IDEA decryption algorithm. She's done a lot of the work for you and has structured her code to make it as easy as possible. She's also left some unit tests that show how her algorithm works.
 
+**The following description was written for the Python implementation, but the Ruby implementation works pretty similar.**
+
 ### The `Word` class
 
 The IDEA algorithm works using special variations of addition, multiplication, and bitwise xor. The `Word` class is a subclass of `int` that implements these operations using the normal `+`, `*`, and `^` operators as expected (the last operator is python's bitwise xor operation!) In addition, the `Word` class implements two methods: `m_inv()` and `a_inv()` which compute the multiplicative and additive inverses of a 16-bit block number for you. You will need to make use of these methods when computing the subkeys.
