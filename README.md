@@ -1,6 +1,6 @@
 # crypto-challenge
 
-Clues to help save Alex are all around you! For this clue, Alex has conveniently left her email username entered into the laptop, but you need to recover the password.
+Clues to help save Alex are all around you! For this clue, you need to find the Email Address of the journalist and send all the evidences to her. Be creative :)
 
 Nearby, you should find a paper with a series of hexadecimal numbers printed on it. From what you know of Alex, this is probably a clue to getting access to her email. You know that Alex has been studying cryptography, and she's left behind an implementation of the [IDEA](https://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm) algorithm. The only problem is that she never finished implementing the decryption step!
 
